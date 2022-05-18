@@ -3,3 +3,6 @@ plotly
 tqdm
 sklearn
 scikit-learn
+pandas
+plotly
+kaleido

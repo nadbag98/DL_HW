@@ -2,7 +2,7 @@ from torch import nn
 
 
 class LinearNet(nn.Module):
-    def __init__(self, hidden_width=100, N=2, in_dim=0, out_dim=0, std_init=0.5):
+    def __init__(self, hidden_width=50, N=2, in_dim=0, out_dim=0, std_init=0.5):
         super().__init__()
         self.hidden_width = hidden_width
         self.N = N
