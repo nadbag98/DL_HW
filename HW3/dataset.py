@@ -6,10 +6,10 @@ from sklearn.datasets import fetch_california_housing
 
 
 class HousingDataset(torch.utils.data.Dataset):
-    '''
+    """
   Prepare the California Housing dataset for regression
   Code was taken from https://github.com/christianversloot/machine-learning-articles/blob/main/how-to-create-a-neural-network-for-regression-with-pytorch.md
-  '''
+  """
 
     def __init__(self, X, y, scale_data=True):
         if not torch.is_tensor(X) and not torch.is_tensor(y):
@@ -30,8 +30,8 @@ def get_california_dataset():
     X, y = fetch_california_housing(return_X_y=True)
     dataset = HousingDataset(X, y)
     num_samples = X.shape[0]
-    train_size = int(num_samples * 0.9)
-    test_size = int(num_samples * 0.1)
+    train_size = int(num_samples * 0.5)
+    test_size = int(num_samples * 0.5)
     train_set, test_set = random_split(dataset, [train_size, test_size])
     # setting batch sizes equal to set size in order to run full batch GD
     train_loader = DataLoader(train_set, batch_size=train_size, shuffle=False)

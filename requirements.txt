@@ -6,3 +6,4 @@ scikit-learn
 pandas
 plotly
 kaleido
+# also follow installation guide in https://github.com/noahgolmant/pytorch-hessian-eigenthings
