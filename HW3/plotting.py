@@ -3,7 +3,7 @@ import plotly.graph_objects as go
 import numpy as np
 
 
-def plot_result(results: dict, value_to_plot: str):
+def plot_result(results: dict, value_to_plot: str, path: str = 'HW3'):
     """
     Plots value of results for each network depth as a function of epoch
     :param results: Dictionary with keys that are network depths, and values that
@@ -22,4 +22,4 @@ def plot_result(results: dict, value_to_plot: str):
         yaxis_title="Value of " + value_to_plot
     )
     # fig.show()
-    fig.write_image(value_to_plot + ".png")
+    fig.write_image(path + '/' + value_to_plot + ".png")

@@ -16,7 +16,7 @@ def train_epoch(net: nn.Module,
         inputs, targets = inputs.to(device), targets.to(device)
         optim.zero_grad()
         outputs = net(inputs)
-        loss = criterion(outputs.view(-1), targets)
+        loss = criterion(outputs, targets)
         loss.backward()
         optim.step()
         epoch_loss += loss.item()

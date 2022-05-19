@@ -17,7 +17,7 @@ class HousingDataset(torch.utils.data.Dataset):
             if scale_data:
                 X = StandardScaler().fit_transform(X)
             self.X = torch.from_numpy(X)
-            self.y = torch.from_numpy(y)
+            self.y = torch.from_numpy(y).view(-1, 1)
 
     def __len__(self):
         return len(self.X)
@@ -30,8 +30,8 @@ def get_california_dataset():
     X, y = fetch_california_housing(return_X_y=True)
     dataset = HousingDataset(X, y)
     num_samples = X.shape[0]
-    train_size = int(num_samples * 0.5)
-    test_size = int(num_samples * 0.5)
+    train_size = int(num_samples * 0.01)
+    test_size = num_samples - train_size
     train_set, test_set = random_split(dataset, [train_size, test_size])
     # setting batch sizes equal to set size in order to run full batch GD
     train_loader = DataLoader(train_set, batch_size=train_size, shuffle=False)
