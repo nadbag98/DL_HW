@@ -1,5 +1,4 @@
 import torch
-from torch import nn
 from torch.utils.data import DataLoader, random_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.datasets import fetch_california_housing

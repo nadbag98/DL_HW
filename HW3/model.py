@@ -10,10 +10,10 @@ class LinearNet(nn.Module):
         self.out_dim = out_dim
         self.std_init = std_init
         self.layers = nn.ModuleList()
-        self.layers.append(nn.Linear(self.in_dim, self.hidden_width))
+        self.layers.append(nn.Linear(self.in_dim, self.hidden_width, bias=False))
         for i in range(N - 2):
-            self.layers.append(nn.Linear(self.hidden_width, self.hidden_width))
-        self.layers.append(nn.Linear(self.hidden_width, self.out_dim))
+            self.layers.append(nn.Linear(self.hidden_width, self.hidden_width, bias=False))
+        self.layers.append(nn.Linear(self.hidden_width, self.out_dim, bias=False))
         self.apply(self._init_weights)
 
     def _init_weights(self, module):
@@ -28,3 +28,9 @@ class LinearNet(nn.Module):
         for layer in self.layers:
             out = layer(out)
         return out
+
+    def get_e2e_vec(self):
+        W = self.layers[-1].weight.data
+        for i in range(len(self.layers) - 2, -1, -1):
+            W = W @ self.layers[i].weight.data
+        return W
