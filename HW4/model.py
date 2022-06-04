@@ -2,16 +2,6 @@ from torch import nn, hub, flatten
 import torch.nn.functional as F
 
 
-class Inception(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.v3 = hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=False)
-        self.lin = nn.Linear(1000, 10)
-
-    def forward(self, x):
-        return self.lin(self.v3(x))
-
-
 class CIFARNet(nn.Module):
     # taken from https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
     def __init__(self):
@@ -19,12 +9,9 @@ class CIFARNet(nn.Module):
         self.conv1 = nn.Conv2d(3, 6, 5)
         self.pool = nn.MaxPool2d(2, 2)
         self.conv2 = nn.Conv2d(6, 16, 5)
-        # self.fc1 = nn.Linear(16 * 5 * 5, 120)
-        # self.fc2 = nn.Linear(120, 84)
-        # self.fc3 = nn.Linear(84, 10)
-        self.fc1 = nn.Linear(16 * 5 * 5, 200)
-        self.fc2 = nn.Linear(200, 100)
-        self.fc3 = nn.Linear(100, 10)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
