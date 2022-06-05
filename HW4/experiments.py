@@ -1,8 +1,4 @@
-from tqdm import tqdm, trange
-import torch
-import numpy as np
-from torch import nn
-from torch.utils import data
+from tqdm import trange
 from model import *
 from dataset import *
 from training import train_epoch, test_epoch

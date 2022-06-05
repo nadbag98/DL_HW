@@ -1,4 +1,4 @@
-from torch import nn, hub, flatten
+from torch import nn, flatten
 import torch.nn.functional as F
 
 

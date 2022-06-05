@@ -1,10 +1,8 @@
-import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
 
 
 def plot_result(vals_dict: dict, metric: str, path: str = "./results", title: str = ""):
-    # N = len(train_vals)
     fig = go.Figure()
     for key, val in vals_dict.items():
         N = len(val)

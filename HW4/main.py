@@ -11,13 +11,14 @@ def main():
     exp_1()
 
     # outputs train_loss_random_data.png
-    # exp_2()
+    exp_2()
 
     # outputs generalization_half_random.png
-    # exp_3()
+    exp_3()
 
     # outputs generalization_half_adversarial.png
-    # exp_4()
+    exp_4()
+
 
 if __name__ == '__main__':
     main()
