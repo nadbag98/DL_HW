@@ -65,9 +65,7 @@ def get_half_random_dls(batch_size=128):
 
 def get_adverserial_cifar_dls(batch_size=128):
     train_set = datasets.CIFAR10("./data", train=True, download=True, transform=preprocess)
-    print(train_set.targets)
-    train_set.targets[:2500] = (train_set.targets[:2500] + 1) % 10
-    print(train_set.targets)
+    train_set.targets[:2500] = [(train_set.targets[i] + 5) % 10 for i in range(2500)]
     train_set = Subset(train_set, range(5000))
     test_set = datasets.CIFAR10("./data", train=False, download=True, transform=preprocess)
     test_set = Subset(test_set, range(1000))
